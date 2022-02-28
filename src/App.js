@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import React, { createContext, Fragment, useContext } from "react";
+import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 
 import "./App.css";
 import Error from "./Pages/Error";
@@ -10,24 +11,21 @@ import NavBar from "./Components/NavBar";
 import Login from "./Components/Login";
 
 function App() {
-  const authctx = useContext(AuthContext);
-  return (
-    <Fragment>
-      <NavBar />
-      <main>
-        {!authctx.isLoggedIn && <Login />}
-        {authctx.isLoggedIn && <Home />}
-      </main>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/hospital" element={<Hospital />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={Error} />
-      </Routes>
-    </Fragment>
-  );
+  const auth = useSelector((state) => state.auth);
+  
+    return (
+        <Fragment>
+            <NavBar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/hospital" element={<Hospital />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/about" element={<About />} />
+                <Route path="*" element={Error} />
+            </Routes>
+        </Fragment>
+    );
 }
 
 export default App;

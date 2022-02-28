@@ -8,7 +8,6 @@ const initialState = {
     registeredNo: null,
     certificateNo: null,
     gstNo: null,
-    email: null,
     password: null,
     rePassword: null,
     phoneNo: null,

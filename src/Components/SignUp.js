@@ -1,9 +1,13 @@
 import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import { signUp } from "../store/actions/authAction";
 
 const SignUp = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const auth = useSelector((state) => state.auth);
 
     const [hospitalName, setHospitalName] = useState("");
     const [registeredNo, setRegisteredNo] = useState("");
@@ -46,6 +50,7 @@ const SignUp = () => {
         setSpeciality("");
     };
 
+    if (auth._id) return navigate("/");
     return (
         <Fragment>
             <form onSubmit={handleSignUpFormSubmit}>

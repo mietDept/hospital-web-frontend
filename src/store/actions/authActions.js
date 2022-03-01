@@ -18,10 +18,10 @@ export const signUp = (user) => {
     };
 };
 
-export const logIn = (user) => {
+export const signIn = (creds) => {
     return (dispatch) => {
         axios
-            .post(`${url}/hospitallogin`, user)
+            .post(`${url}/hospitallogin`, creds)
             .then((token) => {
                 localStorage.setItem("token", token.data);
                 dispatch({
@@ -35,14 +35,22 @@ export const logIn = (user) => {
     };
 };
 
-export const loadUser = () => {
-    return (dispatch, getState) => {
-        const token = getState().auth.token
-        if (token) {
-            dispatch({
-                type: "USER_LOADED",
-                token
-            })
-        }
-    }
-}
+// export const loadUser = () => {
+//     return (dispatch, getState) => {
+//         const token = getState().auth.token;
+//         if (token) {
+//             dispatch({
+//                 type: "USER_LOADED",
+//                 token,
+//             });
+//         } else return null;
+//     };
+// };
+
+export const signOut = () => {
+    return (dispatch) => {
+        dispatch({
+            type: "SIGN_OUT",
+        });
+    };
+};

@@ -1,13 +1,14 @@
-import React, { Fragment, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import "./SignUp.css";
 
-import { signUp } from "../store/actions/authAction";
+import { signUp } from "../store/actions/authActions";
 
 const SignUp = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const auth = useSelector((state) => state.auth);
+    // const navigate = useNavigate();
+    // const auth = useSelector((state) => state.auth);
 
     const [hospitalName, setHospitalName] = useState("");
     const [registeredNo, setRegisteredNo] = useState("");
@@ -20,6 +21,16 @@ const SignUp = () => {
     const [location, setLocation] = useState("");
     const [address, setAddress] = useState("");
     const [speciality, setSpeciality] = useState("");
+
+    // const [geoPosition, setGeoPosition] = useState();
+
+    const handleGetLocation = () => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            setLocation(`${latitude}, ${longitude}`);
+        });
+    };
 
     const handleSignUpFormSubmit = (e) => {
         e.preventDefault();
@@ -50,11 +61,11 @@ const SignUp = () => {
         setSpeciality("");
     };
 
-    if (auth._id) return navigate("/");
     return (
-        <Fragment>
+        <div className="signup-form">
+            <h1>Sign Up</h1>
             <form onSubmit={handleSignUpFormSubmit}>
-                <label htmlFor="">Hospital Name</label>
+                <p>Hospital Name</p>
                 <input
                     type="text"
                     placeholder="Enter Hospital Name"
@@ -63,7 +74,7 @@ const SignUp = () => {
                         setHospitalName(e.target.value);
                     }}
                 />
-                <label htmlFor="">Registered No</label>
+                <p>Registered No</p>
                 <input
                     type="text"
                     placeholder="Enter Registered No"
@@ -72,7 +83,7 @@ const SignUp = () => {
                         setRegisteredNo(e.target.value);
                     }}
                 />
-                <label htmlFor="">Certificate No</label>
+                <p>Certificate No</p>
                 <input
                     type="text"
                     placeholder="Enter Certificate No"
@@ -81,7 +92,7 @@ const SignUp = () => {
                         setCertificateNo(e.target.value);
                     }}
                 />
-                <label htmlFor="">GST No</label>
+                <p>GST No</p>
                 <input
                     type="text"
                     placeholder="Enter GST No"
@@ -90,7 +101,7 @@ const SignUp = () => {
                         setGstNo(e.target.value);
                     }}
                 />
-                <label htmlFor="">Email</label>
+                <p>Email</p>
                 <input
                     type="email"
                     placeholder="Enter Email"
@@ -99,7 +110,7 @@ const SignUp = () => {
                         setEmail(e.target.value);
                     }}
                 />
-                <label htmlFor="">Password</label>
+                <p>Password</p>
                 <input
                     type="password"
                     placeholder="Enter Password"
@@ -108,7 +119,7 @@ const SignUp = () => {
                         setPassword(e.target.value);
                     }}
                 />
-                <label htmlFor="">Enter Again</label>
+                <p>Enter Again</p>
                 <input
                     type="password"
                     placeholder="Re Enter Password"
@@ -117,7 +128,7 @@ const SignUp = () => {
                         setRePassword(e.target.value);
                     }}
                 />
-                <label htmlFor="">Phone No</label>
+                <p>Phone No</p>
                 <input
                     type="text"
                     placeholder="Phone No"
@@ -126,7 +137,7 @@ const SignUp = () => {
                         setPhoneNo(e.target.value);
                     }}
                 />
-                <label htmlFor="">Location</label>
+                <p>Location</p>
                 <input
                     type="text"
                     placeholder="Location"
@@ -134,8 +145,12 @@ const SignUp = () => {
                     onChange={(e) => {
                         setLocation(e.target.value);
                     }}
+                    name="loc"
                 />
-                <label htmlFor="">Address</label>
+                <button type="button" onClick={handleGetLocation}>
+                    Get Location
+                </button>
+                <p>Address</p>
                 <input
                     type="text"
                     placeholder="Address"
@@ -144,7 +159,7 @@ const SignUp = () => {
                         setAddress(e.target.value);
                     }}
                 />
-                <label htmlFor="">Speciality</label>
+                <p>Speciality</p>
                 <input
                     type="text"
                     placeholder="Speciality"
@@ -153,8 +168,9 @@ const SignUp = () => {
                         setSpeciality(e.target.value);
                     }}
                 />
+                <button type="submit">SignUp</button>
             </form>
-        </Fragment>
+        </div>
     );
 };
 

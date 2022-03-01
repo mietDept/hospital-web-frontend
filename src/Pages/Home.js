@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import "./Home.css";
-import Login from "../Components/Login";
+// import SignIn from "../Components/SignIn";
 
 function Home() {
   return (
     <Fragment>
-      <Login />
+      <h1>Hello this is home</h1>
     </Fragment>
   );
 }

@@ -18,6 +18,8 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
+        case "USER_LOADED":
+        case "SIGN_IN":
         case "SIGN_UP":
             const user = jwtDecode(action.token);
             return {
@@ -26,6 +28,23 @@ const authReducer = (state = initialState, action) => {
                 name: user.name,
                 email: user.email,
                 _id: user._id,
+            };
+        case "SIGN_OUT":
+            localStorage.removeItem("token");
+            return {
+                token: null,
+                _id: null,
+                hospitalName: null,
+                email: null,
+                registeredNo: null,
+                certificateNo: null,
+                gstNo: null,
+                password: null,
+                rePassword: null,
+                phoneNo: null,
+                location: null,
+                address: null,
+                speciality: null,
             };
         default:
             return state;

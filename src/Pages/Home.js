@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import "./Home.css";
 // import SignIn from "../Components/SignIn";
 
 function Home() {

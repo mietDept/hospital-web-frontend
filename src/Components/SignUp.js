@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "./SignUp.css";
 
-import { signUp } from "../store/actions/authActions";
+// import { signUp } from "../store/actions/userActions";
 
 const SignUp = () => {
     const dispatch = useDispatch();
@@ -47,7 +46,7 @@ const SignUp = () => {
             address: address,
             speciality: speciality,
         };
-        dispatch(signUp(user));
+        dispatch();
         setHospitalName("");
         setRegisteredNo("");
         setCertificateNo("");

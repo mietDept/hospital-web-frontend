@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "./SignIn.css";
 
-import { signIn } from "../store/actions/authActions";
+// import { signIn } from "../store/actions/userActions";
 
 const SignIn = () => {
     const dispatch = useDispatch();
@@ -19,7 +18,6 @@ const SignIn = () => {
             email: email,
             password: password,
         };
-        dispatch(signIn(creds));
 
         setEmail("");
         setPassword("");

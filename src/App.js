@@ -14,6 +14,8 @@ import Profile from "./Components/Profile";
 import SignUp from "./Components/SignUp";
 import NavBar from "./Components/NavBar";
 import SignIn from "./Components/SignIn";
+import { Container } from "react-bootstrap";
+
 // import {  } from "./store/actions/authActions";
 
 function App() {
@@ -31,7 +33,10 @@ function App() {
                 <Container>
                     <Routes>
                         <Route path="/" element={<Hospital />} />
+                        <Route path="/signin" element={<SignIn />} />
+                        <Route path="/signup" element={<SignUp />} />
                         <Route path="/admin" element={<Admin />} />
+
                         <Route path="*" element={Error} />
                     </Routes>
                 </Container>

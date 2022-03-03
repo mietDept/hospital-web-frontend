@@ -30,7 +30,7 @@ const SignIn = () => {
     return (
         <Container className=" mt-5">
             <Row className="justify-content-md-center">
-                <Col xs={2} md={4}>
+                <Col xs={12} md={4}>
                     <h1 className="text-center">Sign In</h1>
                     <Form onSubmit={handleSignInFormSubmit}>
                         <Form.Group controlId="formBasicEmail" className="mb-4">
@@ -40,6 +40,7 @@ const SignIn = () => {
                                 placeholder="Enter email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
+                                required
                             />
                         </Form.Group>
 
@@ -53,6 +54,7 @@ const SignIn = () => {
                                 placeholder="Password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                required
                             />
                         </Form.Group>
                         <Button variant="primary" type="submit">

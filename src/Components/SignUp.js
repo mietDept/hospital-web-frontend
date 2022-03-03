@@ -1,4 +1,12 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
+import {
+    Form,
+    Button,
+    InputGroup,
+    FormControl,
+    Col,
+    Row,
+} from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -61,115 +69,173 @@ const SignUp = () => {
     };
 
     return (
-        <div className="signup-form">
-            <h1>Sign Up</h1>
-            <form onSubmit={handleSignUpFormSubmit}>
-                <p>Hospital Name</p>
-                <input
-                    type="text"
-                    placeholder="Enter Hospital Name"
-                    value={hospitalName}
-                    onChange={(e) => {
-                        setHospitalName(e.target.value);
-                    }}
-                />
-                <p>Registered No</p>
-                <input
-                    type="text"
-                    placeholder="Enter Registered No"
-                    value={registeredNo}
-                    onChange={(e) => {
-                        setRegisteredNo(e.target.value);
-                    }}
-                />
-                <p>Certificate No</p>
-                <input
-                    type="text"
-                    placeholder="Enter Certificate No"
-                    value={certificateNo}
-                    onChange={(e) => {
-                        setCertificateNo(e.target.value);
-                    }}
-                />
-                <p>GST No</p>
-                <input
-                    type="text"
-                    placeholder="Enter GST No"
-                    value={gstNo}
-                    onChange={(e) => {
-                        setGstNo(e.target.value);
-                    }}
-                />
-                <p>Email</p>
-                <input
-                    type="email"
-                    placeholder="Enter Email"
-                    value={email}
-                    onChange={(e) => {
-                        setEmail(e.target.value);
-                    }}
-                />
-                <p>Password</p>
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    value={password}
-                    onChange={(e) => {
-                        setPassword(e.target.value);
-                    }}
-                />
-                <p>Enter Again</p>
-                <input
-                    type="password"
-                    placeholder="Re Enter Password"
-                    value={rePassword}
-                    onChange={(e) => {
-                        setRePassword(e.target.value);
-                    }}
-                />
-                <p>Phone No</p>
-                <input
-                    type="text"
-                    placeholder="Phone No"
-                    value={phoneNo}
-                    onChange={(e) => {
-                        setPhoneNo(e.target.value);
-                    }}
-                />
-                <p>Location</p>
-                <input
-                    type="text"
-                    placeholder="Location"
-                    value={location}
-                    onChange={(e) => {
-                        setLocation(e.target.value);
-                    }}
-                    name="loc"
-                />
-                <button type="button" onClick={handleGetLocation}>
-                    Get Location
-                </button>
-                <p>Address</p>
-                <input
-                    type="text"
-                    placeholder="Address"
-                    value={address}
-                    onChange={(e) => {
-                        setAddress(e.target.value);
-                    }}
-                />
-                <p>Speciality</p>
-                <input
-                    type="text"
-                    placeholder="Speciality"
-                    value={speciality}
-                    onChange={(e) => {
-                        setSpeciality(e.target.value);
-                    }}
-                />
-                <button type="submit">SignUp</button>
-            </form>
-        </div>
+        <Fragment>
+            <Row className="justify-content-md-center">
+                <h1 className="m-4 text-center">Sign Up</h1>
+                <Col xs={12} md={12}>
+                    <Form onSubmit={handleSignUpFormSubmit}>
+                        <Row className="mb-6">
+                            <Form.Group as={Col} className="mb-4">
+                                <Form.Label>Hospital Name</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter Hospital Name"
+                                    value={hospitalName}
+                                    onChange={(e) => {
+                                        setHospitalName(e.target.value);
+                                    }}
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col} className="mb-4">
+                                <Form.Label>Registered No</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter Registered No"
+                                    value={registeredNo}
+                                    onChange={(e) => {
+                                        setRegisteredNo(e.target.value);
+                                    }}
+                                    required
+                                />
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-6">
+                            <Form.Group as={Col} className="mb-4">
+                                <Form.Label>Certificate No</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter Certificate No"
+                                    value={certificateNo}
+                                    onChange={(e) => {
+                                        setCertificateNo(e.target.value);
+                                    }}
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col} className="mb-4">
+                                <Form.Label>GST No</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter GST No"
+                                    value={gstNo}
+                                    onChange={(e) => {
+                                        setGstNo(e.target.value);
+                                    }}
+                                    required
+                                />
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} className="mb-4">
+                                <Form.Label>Email</Form.Label>
+                                <InputGroup>
+                                    <InputGroup.Text>@</InputGroup.Text>
+                                    <Form.Control
+                                        type="email"
+                                        placeholder="Enter Email"
+                                        value={email}
+                                        onChange={(e) => {
+                                            setEmail(e.target.value);
+                                        }}
+                                        required
+                                    />
+                                </InputGroup>
+                            </Form.Group>
+                            <Form.Group as={Col} className="mb-4">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder="Enter Password"
+                                    value={password}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value);
+                                    }}
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col} className="mb-4">
+                                <Form.Label>Enter Again</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder="Re Enter Password"
+                                    value={rePassword}
+                                    onChange={(e) => {
+                                        setRePassword(e.target.value);
+                                    }}
+                                    required
+                                />
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-6">
+                            <Form.Group as={Col} className="mb-4">
+                                <Form.Label>Phone No</Form.Label>
+                                <InputGroup>
+                                    <InputGroup.Text>+91</InputGroup.Text>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Phone No"
+                                        value={phoneNo}
+                                        onChange={(e) => {
+                                            setPhoneNo(e.target.value);
+                                        }}
+                                        required
+                                    />
+                                </InputGroup>
+                            </Form.Group>
+                            <Form.Group as={Col} className="mb-4">
+                                <Form.Label>Location</Form.Label>
+                                <InputGroup className="mb-3">
+                                    <FormControl
+                                        placeholder="location"
+                                        aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2"
+                                        value={location}
+                                        required
+                                    />
+                                    <Button
+                                        variant="outline-success"
+                                        id="button-addon2"
+                                        onClick={handleGetLocation}
+                                    >
+                                        Get location
+                                    </Button>
+                                </InputGroup>
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-6">
+                            <Form.Group as={Col} className="mb-4">
+                                <Form.Label>Address</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Address"
+                                    value={address}
+                                    onChange={(e) => {
+                                        setAddress(e.target.value);
+                                    }}
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col} className="mb-4">
+                                <Form.Label>Speciality</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Speciality"
+                                    value={speciality}
+                                    onChange={(e) => {
+                                        setSpeciality(e.target.value);
+                                    }}
+                                    required
+                                />
+                            </Form.Group>
+                        </Row>
+                        <Form.Group className="mb-4 float-end">
+                            <Button type="submit">SignUp</Button>
+                        </Form.Group>
+                    </Form>
+                </Col>
+            </Row>
+        </Fragment>
     );
 };
 

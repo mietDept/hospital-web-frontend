@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import {
     Container,
@@ -14,9 +14,11 @@ import {
 // import { signOut } from "../store/actions/userActions";
 
 const NavBar = () => {
-    // const auth = useSelector((state) => state);
+    const userLogin = useSelector((state) => state.userLogin);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const { error, loading, userInfo } = userLogin;
 
     const handleSignOut = () => {
         navigate("/");
@@ -38,24 +40,26 @@ const NavBar = () => {
                         <Nav.Link></Nav.Link>
                         <Nav.Link>Link</Nav.Link>
                     </Nav>
-                    <Nav className="d-flex pe-5 me-3">
-                        <NavDropdown
-                            title="Profile"
-                            id="navbarScrollingDropdown"
-                        >
-                            <NavDropdown.Item href="#action3">
-                                Sign In
-                            </NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action4">
-                                Sign Out
-                            </NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action5">
-                                Settings
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
+                    {userInfo ? (
+                        <Nav className="d-flex pe-5">
+                            <NavDropdown
+                                title="Profile"
+                                id="navbarScrollingDropdown"
+                            >
+                                <NavDropdown.Item href="#action3">
+                                    Sign In
+                                </NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item href="#action4">
+                                    Sign Out
+                                </NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item href="#action5">
+                                    Settings
+                                </NavDropdown.Item>
+                            </NavDropdown>
+                        </Nav>
+                    ) : null}
                 </Navbar.Collapse>
             </Container>
         </Navbar>

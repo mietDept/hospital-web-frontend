@@ -35,8 +35,8 @@ const NavBar = () => {
                         style={{ maxHeight: "100px" }}
                         navbarScroll
                     >
-                        <Link><Nav.Link></Nav.Link></Link>
-                        <Link><Nav.Link>Link</Nav.Link></Link>
+                        <Nav.Link></Nav.Link>
+                        <Nav.Link>Link</Nav.Link>
                     </Nav>
                     <Nav className="d-flex pe-5 me-3">
                         <NavDropdown

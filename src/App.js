@@ -16,11 +16,11 @@ import NavBar from "./Components/NavBar";
 import SignIn from "./Components/SignIn";
 import { Container } from "react-bootstrap";
 
-// import {  } from "./store/actions/authActions";
-
 function App() {
-    const auth = useSelector((state) => state.auth);
+    const userLogin = useSelector((state) => state.userLogin);
     const dispatch = useDispatch();
+
+    const { error, loading, userInfo } = userLogin;
 
     // useEffect(() => {
     //     dispatch(loadUser());
@@ -32,16 +32,17 @@ function App() {
                 <NavBar />
                 <Container>
                     <Routes>
-                        <Route path="/" element={<Hospital />} />
+                        <Route
+                            path="/"
+                            element={userInfo ? <Hospital /> : <SignIn />}
+                        />
                         <Route path="/signin" element={<SignIn />} />
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/admin" element={<Admin />} />
-
                         <Route path="*" element={Error} />
                     </Routes>
                 </Container>
             </main>
-            {/* <Footer /> */}
         </React.Fragment>
     );
 }

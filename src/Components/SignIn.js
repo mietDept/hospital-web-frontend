@@ -25,6 +25,7 @@ const SignIn = () => {
         dispatch(login(email, password));
         setEmail("");
         setPassword("");
+        navigate("/");
     };
 
     return (

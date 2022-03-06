@@ -8,13 +8,13 @@ import {
     Row,
 } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-// import { signUp } from "../store/actions/userActions";
+import { register } from "../actions/userActions";
 
 const SignUp = () => {
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // const auth = useSelector((state) => state.auth);
 
     const [hospitalName, setHospitalName] = useState("");
@@ -48,13 +48,12 @@ const SignUp = () => {
             gstNo: gstNo,
             email: email,
             password: password,
-            rePassword: rePassword,
             phoneNo: phoneNo,
             location: location,
             address: address,
             speciality: speciality,
         };
-        dispatch();
+        dispatch(register(user));
         setHospitalName("");
         setRegisteredNo("");
         setCertificateNo("");
@@ -66,6 +65,7 @@ const SignUp = () => {
         setLocation("");
         setAddress("");
         setSpeciality("");
+        navigate("/");
     };
 
     return (
@@ -191,6 +191,7 @@ const SignUp = () => {
                                         aria-label="Recipient's username"
                                         aria-describedby="basic-addon2"
                                         value={location}
+                                        readOnly
                                         required
                                     />
                                     <Button
@@ -233,6 +234,11 @@ const SignUp = () => {
                             <Button type="submit">SignUp</Button>
                         </Form.Group>
                     </Form>
+                    <Row className="float-end mx-2 py-3">
+                        <Col>
+                            Go back to? <Link to="/">Login</Link>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         </Fragment>

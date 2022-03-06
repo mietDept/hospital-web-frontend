@@ -11,7 +11,7 @@ import {
     Button,
 } from "react-bootstrap";
 
-// import { signOut } from "../store/actions/userActions";
+import { logout } from "../actions/userActions";
 
 const NavBar = () => {
     const userLogin = useSelector((state) => state.userLogin);
@@ -20,8 +20,8 @@ const NavBar = () => {
 
     const { error, loading, userInfo } = userLogin;
 
-    const handleSignOut = () => {
-        navigate("/");
+    const logoutHandler = () => {
+        dispatch(logout());
     };
 
     return (
@@ -43,14 +43,11 @@ const NavBar = () => {
                     {userInfo ? (
                         <Nav className="d-flex pe-5">
                             <NavDropdown
-                                title="Profile"
+                                title="profile"
                                 id="navbarScrollingDropdown"
                             >
-                                <NavDropdown.Item href="#action3">
-                                    Sign In
-                                </NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action4">
+                                <NavDropdown.Item onClick={logoutHandler}>
                                     Sign Out
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
